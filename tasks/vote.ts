@@ -10,9 +10,9 @@ task("vote", "Vote for proposal")
         const [me] = await hre.ethers.getSigners();
         // await token.connect(me).approve
         if (String(taskArgs.for) == "1"){
-            await dao.vote(taskArgs.daoId,true,taskArgs.amount);
+            await dao.connect(me).vote(taskArgs.daoId,true,taskArgs.amount);
         } else{
-            await dao.vote(taskArgs.daoId,false,taskArgs.amount);
+            await dao.connect(me).vote(taskArgs.daoId,false,taskArgs.amount);
         }
         console.log("success");
     });
